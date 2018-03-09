@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="ehcache.xsd" name="NBLCache">
+    <defaultCache        
+        maxEntriesLocalDisk="0"
+        maxEntriesLocalHeap="0"
+        eternal="true"
+        overflowToOffHeap="false">
+        <persistence strategy="none"/>
+    </defaultCache>
+    <cache name="textos"
+           maxEntriesLocalDisk="0"
+           maxEntriesLocalHeap="0"
+           eternal="true"
+           overflowToOffHeap="false">
+        <persistence strategy="none"/>
+    </cache>
+    <cache name="objetos" 
+           maxEntriesLocalDisk="0"
+           maxEntriesLocalHeap="0"
+           eternal="true"
+           overflowToOffHeap="false">
+        <persistence strategy="none"/>
+    </cache>
+    <cache name="parametros"
+           maxEntriesLocalDisk="0"
+           maxEntriesLocalHeap="0"
+           eternal="true"
+           overflowToOffHeap="false">
+        <persistence strategy="none"/>
+    </cache>
+    <cache name="menus"
+           maxEntriesLocalDisk="0"
+           maxEntriesLocalHeap="0"
+           eternal="true"
+           overflowToOffHeap="false">
+        <persistence strategy="none"/>
+    </cache>
+        <cache  name="SimplePageCachingFilter"
+            maxEntriesLocalHeap="1000"
+            maxEntriesLocalDisk="1000"
+            eternal="false" 
+            timeToLiveSeconds="604800"
+            timeToIdleSeconds="604800"
+            overflowToDisk="false"
+            memoryStoreEvictionPolicy="LFU">
+    </cache> 
+</ehcache>
