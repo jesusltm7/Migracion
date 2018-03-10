@@ -13,12 +13,12 @@ import javax.persistence.Query;
 
 @Named("paisesFacade")
 @Stateless(name="maPaisesFacade")
-public class PaisesFacade
-  extends AbstractFacade<Paises>
+public class PaisesFacade  extends AbstractFacade<Paises>
 {
   @PersistenceContext(unitName="maPU")
   private EntityManager em;
   
+  @Override
   protected EntityManager getEntityManager()
   {
     return this.em;
@@ -38,8 +38,9 @@ public class PaisesFacade
     catch (NoResultException e)
     {
       Log.getInstance().warn(LogNBL.MIGRAR.getCodigo(), "NBL", "Error en el metodo todos() = ", e);
+      return null;
     }
-    return null;
+    
   }
   
   public List<Paises> todasNacionalidades()
@@ -51,8 +52,9 @@ public class PaisesFacade
     catch (NoResultException e)
     {
       Log.getInstance().warn(LogNBL.MIGRAR.getCodigo(), "NBL", "Error en el metodo todasNacionalidades() = ", e);
+      return null;
     }
-    return null;
+    
   }
   
   public Paises findByCodigoCore(String codigoCore)
@@ -64,8 +66,9 @@ public class PaisesFacade
     catch (NoResultException e)
     {
       Log.getInstance().warn(LogNBL.MIGRAR.getCodigo(), "NBL", "Error en el metodo findByCodigoCore(String codigoCore) = ", e);
+      return null;
     }
-    return null;
+    
   }
   
   public Paises findByCodigoCoreWithoutExcCntrlFlow(String codigoCore)
@@ -77,7 +80,8 @@ public class PaisesFacade
     catch (NoResultException e)
     {
       Log.getInstance().warn(LogNBL.MIGRAR.getCodigo(), "NBL", "Error en el metodo findByCodigoCoreWithoutExcCntrlFlow(String codigoCore) = ", e);
-    }
     return null;
+    }
+    
   }
 }

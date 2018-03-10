@@ -49,6 +49,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "PerfilesNbl.findByDescripcion", query = "SELECT p FROM PerfilesNbl p WHERE p.descripcion = :descripcion"),
     @NamedQuery(name = "PerfilesNbl.findByClientePerfilBase", query = "SELECT p FROM PerfilesNbl p WHERE p.clientesId = :clientesId AND p.perfilBaseId = :perfilBaseId"),
     @NamedQuery(name = "PerfilesNbl.findByCliente", query = "SELECT p FROM PerfilesNbl p WHERE p.clientesId = :clientesId AND p.estado = 'A'")})
+
 public class PerfilesNbl implements Serializable {
 
     private static final long serialVersionUID = 1L;

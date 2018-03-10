@@ -13,8 +13,7 @@ import javax.persistence.Query;
 
 @Named("clientesFacade")
 @Stateless(name="maClientesFacade")
-public class ClientesFacade
-  extends AbstractFacade<Clientes>
+public class ClientesFacade extends AbstractFacade<Clientes>
 {
   @PersistenceContext(unitName="maPU")
   private EntityManager em;
@@ -33,13 +32,17 @@ public class ClientesFacade
   {
     try
     {
-      return (Clientes)getEntityManager().createQuery("select c from Clientes c where c.tipoIdentificacion=:tipo and c.identificacion=:identificacion").setParameter("tipo", tipo).setParameter("identificacion", cedula).getSingleResult();
+      return (Clientes)getEntityManager()
+              .createQuery("select c from Clientes c where c.tipoIdentificacion=:tipo and c.identificacion=:identificacion")
+              .setParameter("tipo", tipo).setParameter("identificacion", cedula)
+              .getSingleResult();
     }
     catch (NoResultException e)
     {
       Log.getInstance().error(LogNBL.MIGRAR.getCodigo(), tipo + cedula, ("ERROR ENCONTRADO = {0}" + e).toUpperCase());
+      return null;
     }
-    return null;
+    
   }
   
   public Clientes porId(Long Id)
@@ -52,8 +55,9 @@ public class ClientesFacade
     catch (Exception e)
     {
       Log.getInstance().error(LogNBL.MIGRAR.getCodigo(), "NBL clientes", ("ERROR ENCONTRADO = {0}" + e).toUpperCase());
+      return null;
     }
-    return null;
+    
   }
   
   public Clientes finds(Long id)
@@ -65,21 +69,25 @@ public class ClientesFacade
     catch (NoResultException e)
     {
       Log.getInstance().error(LogNBL.MIGRAR.getCodigo(), ClientesFacade.class.getName(), ("ERROR ENCONTRADO = {0}" + e).toUpperCase());
+      return null;
     }
-    return null;
+    
   }
   
   public Long getSequence()
   {
     try
     {
-      return Long.valueOf(((BigDecimal)getEntityManager().createNativeQuery("select CLIENTES_SEQ.nextval from dual").getSingleResult()).longValue());
+      return Long.valueOf(((BigDecimal)getEntityManager().createNativeQuery("select CLIENTES_SEQ.nextval from dual")
+              .getSingleResult())
+              .longValue());
     }
     catch (NoResultException e)
     {
       Log.getInstance().error(LogNBL.MIGRAR.getCodigo(), "NBL clientes", ("ERROR ENCONTRADO = {0}" + e).toUpperCase());
+      return null;
     }
-    return null;
+    
   }
   
   public String getSharedKeySequence()
@@ -91,7 +99,8 @@ public class ClientesFacade
     catch (NoResultException e)
     {
       Log.getInstance().error(LogNBL.MIGRAR.getCodigo(), "NBL clientesBankin", ("ERROR ENCONTRADO = {0}" + e).toUpperCase());
+       return null;
     }
-    return null;
+   
   }
 }
