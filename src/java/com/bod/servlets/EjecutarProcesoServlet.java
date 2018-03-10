@@ -72,6 +72,7 @@ public class EjecutarProcesoServlet
             finally {
                 SingletonController.getInstance().liberarControl();
             }
+            // cambio de prueba
             System.out.println("finaliza servlet");;
         } else {
             Log.getInstance().info(LogNBL.MIGRAR.getCodigo(), "MIGRAR", "Existe un proceso en ejecucion");
