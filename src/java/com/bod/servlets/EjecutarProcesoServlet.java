@@ -72,7 +72,7 @@ public class EjecutarProcesoServlet
             finally {
                 SingletonController.getInstance().liberarControl();
             }
-            System.out.println("finaliza servlet");
+            System.out.println("finaliza servlet");;
         } else {
             Log.getInstance().info(LogNBL.MIGRAR.getCodigo(), "MIGRAR", "Existe un proceso en ejecucion");
             httpResponseCode = 405;
